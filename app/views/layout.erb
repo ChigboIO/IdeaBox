@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>IdeaBox</title>
+
+	<link rel="stylesheet" href="/bootstrap-3.2.2/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+	
+</head>
+<body style="margin-top: 70px;">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle Navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">IdeaBox</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<!--something -->
+                </ul>
+
+				<%= erb :navbar_partial %>
+
+			</div>
+		</div>
+	</nav>
+
+	<div style="padding: 0 20%">
+		<% if flash[:global] %>
+			<div class="alert <%= flash[:global][:alert_type] %> alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<%= flash[:global][:message] %>
+			</div>
+		<% end %>
+	</div>
+
+	<%= yield %>
+	<!-- Scripts -->
+
+	<!-- Footer -->
+	<footer id="footer" style="text-align: center">
+		<ul class="copyright">
+			<li>&copy; Untitled. All rights reserved.</li>
+			<li>Design: <a target="_blank" href="http://andela.co/">EmmanuelScience@Andela</a></li>
+		</ul>
+	</footer>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/bootstrap-3.2.2/js/bootstrap.min.js"></script>
+</body>
+</html>

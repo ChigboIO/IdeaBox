@@ -1,0 +1,7 @@
+
+development:
+ adapter: mysql2
+ database: ideabox_db
+ username: root
+ password: ''
+ host: localhost

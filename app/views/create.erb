@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+                    <div class="panel-title">Create/Edit an Idea</div>
+				</div>
+
+				<div class="panel-body" style="min-height: 450px">
+					<div align="">
+						<form action="/members/<%= session[:username] %>/idea/create" method="post">
+							<input type="hidden" name="id" value="<%= @idea[:id] %>"
+							<div><label>Title*</label></div>
+							<div><input type="test" name="title" value="<%= @idea[:title] %>" class="form-control"></div>
+							<div><label>Description</label></div>
+							<div><textarea name="description" class="form-control" rows="12"><%= @idea[:description] %></textarea></div>
+							<button type="submit" class="btn btn-default">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

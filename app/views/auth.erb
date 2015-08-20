@@ -1,0 +1,49 @@
+<!-- Banner -->
+<% errors = flash[:error] ? flash[:error] : {} %>
+<div class="container" style="min-height: 450px">
+	<div class="row">
+		<div id="login-div" class="col-sm-8">
+			<h2>Login</h2>
+			<div>
+				<% if errors.has_key? (:username) %>
+				  <%= errros.full_message(:username) %>
+				<% end %>
+			</div>
+			<form action="/auth/login" method="post" class="form-horizontal">
+				<input type="text" name="username" class="form-control" placeholder="Username*">
+				<input type="password" name="password" class="form-control" placeholder="Password*">
+				<input type="submit" name="submit" value="Login" class="btn btn-default">
+			</form>
+		</div>
+		<div id="signup-div" class="col-sm-4">
+			<h2>Signup</h2>
+			<form action="/auth/signup" method="post" class="">
+				
+				<input type="text" name="fullname" class="form-control fill" placeholder="Fullname*">
+				<% if errors.has_key? (:fullname) %>
+				  <%= errros.full_message(:fullname) %>
+				<% end %>
+
+				<input type="email" name="email" class="form-control" placeholder="Email*">
+				<% if errors.has_key? (:email) %>
+				  <%= errros.full_message(:email) %>
+				<% end %>
+
+				<input type="text" name="username" class="form-control" placeholder="Username*">
+				<% if errors.has_key? (:username) %>
+				  <%= errros.full_message(:username) %>
+				<% end %>
+
+				<input type="password" name="password" class="form-control" placeholder="Password*">
+				<% if errors.has_key? (:password) %>
+				  <%= errros.full_message(:password) %>
+				<% end %>
+
+				<input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
+				<input type="submit" value="Register" class="btn btn-default">
+			</form>
+		</div>
+	</div>
+</div>
+<!--<a href="#one" class="goto-next scrolly">Next</a>-->
+

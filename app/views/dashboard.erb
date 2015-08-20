@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+                    <div class="panel-title">Dashboard</div>
+				</div>
+
+				<div class="panel-body" style="min-height: 450px">
+					<div>
+						<table align="center">
+							<tr>
+								<td rowspan="4" style="padding-right: 20px">
+									<img src="/img/avatars/<%= @member.avatar %>">
+								</td>
+								<td width="150">Full Name</td><td><%= @member.fullname %></td></tr>
+							<tr><td>Username</td><td><%= @member.username %></td></tr>
+							<tr><td>Email</td><td><%= @member.email %></td></tr>
+							<tr><td>Number of Ideas</td><td><%= Idea.where({created_by: @member.username}).count %></td></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

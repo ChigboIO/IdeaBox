@@ -1,0 +1,30 @@
+<ul class="nav navbar-nav navbar-right">
+	<li><a href="/">Home</a></li>
+	<li><a href="/ideas/sort-by/created">Latest</a></li>
+	<li><a href="/ideas/sort-by/ranking">Ranking</a></li>
+	<li><a href="/ideas/sort-by/title">A - Z</a></li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tags<span class="caret"></span></a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="#">Analysis</a></li>
+			<li><a href="#">Windows Software</a></li>
+			<li><a href="#">Android Application</a></li>
+			<li><a href="#">Social Network</a></li>
+			<li><a href="#">Ruby</a></li>
+		</ul>
+	</li>
+	<% if (!session[:username]) %>
+		<li><a href="/auth">Login</a></li>
+		<li><a href="/auth">Register</a></li>
+	<% else %>
+		<li><a href="/members/<%= session[:username] %>/idea/create">create idea</a>
+		<li><a href="/ideas/created-by/<%= session[:username] %>">my ideas</a>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <%= session[:username] %> <span class="caret"></span></a>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="/members/<%= session[:username] %>/dashboard">dashboard</a></li>
+				<li><a href="/logout">logout</a></li>
+			</ul>
+		</li>
+	<% end %>
+</ul>

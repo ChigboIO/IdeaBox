@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+                    <div class="panel-title"><%= @idea.title %>
+	                    <span class="pull-right">
+		                    <span><%= @idea[:likes] %> like(s)</span>
+		                    <% member_username = session[:username] ? session[:username] : ''
+							like_unlike = Like.where("idea_id = '#{@idea.id}' AND liked_by = '#{member_username}'").first ? 'unlike' : 'like' 
+							btn_type = like_unlike == 'like' ? 'btn-default' : 'btn-info'
+							%>
+							<form method="post" action='/ideas/<%= @idea.id %>/<%= like_unlike %>' style="display: inline-block">
+								<input type="hidden" name="_method" value="put">
+								<button type="submit" class="btn <%= btn_type %>"><%= like_unlike %></button>
+							</form>
+		                    <% if session[:username] && (session[:username] == @idea.created_by) %>
+		                    	<a href="/members/<%= session[:username] %>/idea/<%= @idea.id %>/edit" class="btn btn-warning">edit</a>
+		                    	<form method="post" action='/ideas/<%= @idea.id %>/delete' style="display: inline-block">
+									<input type="hidden" name="_method" value="delete">
+									<button type="submit" class="btn btn-danger">delete</button>
+								</form>
+		                    <% end %>
+	                    </span>
+	                </div>
+				</div>
+
+				<div class="panel-body" style="min-height: 450px">
+					<div>
+						<p><%= @idea.description.gsub("\n", "<br>") %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
