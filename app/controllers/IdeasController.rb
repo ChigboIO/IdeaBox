@@ -8,12 +8,14 @@ class IdeasController < App
 	end
 
 	get '/sort-by/created' do
+		@heading = "Idea List ~ Sorted by Creation Time"
 		@ideas = Idea.order(created_at: :desc)
 		### call the ideas list display view
 		erb :idea_list
 	end
 
 	get '/sort-by/title' do
+		@heading = "Idea List ~ Sorted by Idea Title"
 		@ideas = Idea.order(title: :asc)
 		### call the ideas list display view
 		erb :idea_list
@@ -21,6 +23,7 @@ class IdeasController < App
 
 	get '/sort-by/ranking' do
 		#{}"display the ideas in the sort-by-ranked"
+		@heading = "Idea List ~ Sorted by Ranking"
 		@ideas = Idea.order(likes: :desc)
 		### call the ideas list display view
 		erb :idea_list
@@ -28,6 +31,7 @@ class IdeasController < App
 
 	get '/created-by/:username' do |username|
 		@member	= Member.where(username: username).take
+		@heading = "Idea List ~ Created by #{username.capitalize}"
 		@ideas	= Idea.where(created_by: username).all
 		# call the view to display all the ideas by this user
 		erb :idea_list
